@@ -1,24 +1,32 @@
 input.onButtonPressed(Button.A, function () {
-    kk += 1
-    radio.sendValue("kk", kk)
+    radio.sendValue("motores", 1)
+})
+input.onButtonPressed(Button.AB, function () {
+    radio.sendValue("motores", 0)
 })
 input.onButtonPressed(Button.B, function () {
-    mafufi += 1
-    radio.sendValue("mafufi", mafufi)
+    radio.sendValue("motores", 2)
 })
 radio.onReceivedValue(function (name, value) {
-    if (name == "kk") {
-        music.playTone(262, music.beat(BeatFraction.Whole))
-    } else if (name == "mafufi") {
-        music.playTone(233, music.beat(BeatFraction.Whole))
+    if (name == "motores" && value == 1) {
+        pins.digitalWritePin(DigitalPin.P0, 1)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        pins.digitalWritePin(DigitalPin.P2, 1)
+        pins.digitalWritePin(DigitalPin.P3, 0)
+    } else if (name == "motores" && value == 2) {
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        pins.digitalWritePin(DigitalPin.P1, 1)
+        pins.digitalWritePin(DigitalPin.P2, 0)
+        pins.digitalWritePin(DigitalPin.P3, 1)
+    } else if (name == "motores" && value == 0) {
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        pins.digitalWritePin(DigitalPin.P2, 0)
+        pins.digitalWritePin(DigitalPin.P3, 0)
     } else {
     	
     }
 })
-let mafufi = 0
-let kk = 0
-kk = 0
-mafufi = 0
 radio.setGroup(1)
 basic.forever(function () {
 	
