@@ -11,7 +11,7 @@
  * Stop
  */
 function runWithsensores () {
-    if (pins.digitalReadPin(DigitalPin.P5) == 1 && pins.digitalReadPin(DigitalPin.P6) == 1) {
+    if (pins.digitalReadPin(DigitalPin.P0) == 0 && pins.digitalReadPin(DigitalPin.P1) == 0) {
         basic.showLeds(`
             . . . . .
             . . # . .
@@ -19,11 +19,11 @@ function runWithsensores () {
             # # # # #
             . . . . .
             `)
-        pins.digitalWritePin(DigitalPin.P0, 1)
-        pins.digitalWritePin(DigitalPin.P1, 0)
-        pins.digitalWritePin(DigitalPin.P2, 1)
-        pins.digitalWritePin(DigitalPin.P3, 0)
-    } else if (pins.digitalReadPin(DigitalPin.P5) == 1 && pins.digitalReadPin(DigitalPin.P6) == 0) {
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P9, 1)
+        pins.digitalWritePin(DigitalPin.P10, 0)
+        pins.digitalWritePin(DigitalPin.P11, 0)
+    } else if (pins.digitalReadPin(DigitalPin.P0) == 1 && pins.digitalReadPin(DigitalPin.P1) == 0) {
         basic.showLeds(`
             . . . # .
             . . # # .
@@ -31,11 +31,11 @@ function runWithsensores () {
             . . # # .
             . . . # .
             `)
-        pins.digitalWritePin(DigitalPin.P0, 1)
-        pins.digitalWritePin(DigitalPin.P1, 0)
-        pins.digitalWritePin(DigitalPin.P2, 0)
-        pins.digitalWritePin(DigitalPin.P3, 1)
-    } else if (pins.digitalReadPin(DigitalPin.P5) == 0 && pins.digitalReadPin(DigitalPin.P6) == 1) {
+        pins.digitalWritePin(DigitalPin.P8, 1)
+        pins.digitalWritePin(DigitalPin.P9, 0)
+        pins.digitalWritePin(DigitalPin.P10, 0)
+        pins.digitalWritePin(DigitalPin.P11, 1)
+    } else if (pins.digitalReadPin(DigitalPin.P0) == 0 && pins.digitalReadPin(DigitalPin.P1) == 1) {
         basic.showLeds(`
             . # . . .
             . # # . .
@@ -43,11 +43,11 @@ function runWithsensores () {
             . # # . .
             . # . . .
             `)
-        pins.digitalWritePin(DigitalPin.P0, 0)
-        pins.digitalWritePin(DigitalPin.P1, 1)
-        pins.digitalWritePin(DigitalPin.P2, 1)
-        pins.digitalWritePin(DigitalPin.P3, 0)
-    } else if (pins.digitalReadPin(DigitalPin.P5) == 0 && pins.digitalReadPin(DigitalPin.P6) == 0) {
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P9, 1)
+        pins.digitalWritePin(DigitalPin.P10, 1)
+        pins.digitalWritePin(DigitalPin.P11, 0)
+    } else if (pins.digitalReadPin(DigitalPin.P0) == 1 && pins.digitalReadPin(DigitalPin.P1) == 1) {
         basic.showLeds(`
             . # # # .
             # . . # #
@@ -55,15 +55,70 @@ function runWithsensores () {
             # # . . #
             . # # # .
             `)
-        pins.digitalWritePin(DigitalPin.P3, 0)
-        pins.digitalWritePin(DigitalPin.P3, 0)
-        pins.digitalWritePin(DigitalPin.P3, 0)
-        pins.digitalWritePin(DigitalPin.P3, 0)
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P9, 0)
+        pins.digitalWritePin(DigitalPin.P10, 0)
+        pins.digitalWritePin(DigitalPin.P11, 0)
     } else {
     	
     }
 }
-let control2 = 0
+function radioControl () {
+    if (pins.digitalReadPin(DigitalPin.P0) == 0 && pins.digitalReadPin(DigitalPin.P1) == 0) {
+        basic.showLeds(`
+            . . . . .
+            . . # . .
+            . # . # .
+            # # # # #
+            . . . . .
+            `)
+        pins.digitalWritePin(DigitalPin.P8, 1)
+        pins.digitalWritePin(DigitalPin.P9, 0)
+        pins.digitalWritePin(DigitalPin.P10, 1)
+        pins.digitalWritePin(DigitalPin.P11, 0)
+    } else if (pins.digitalReadPin(DigitalPin.P0) == 1 && pins.digitalReadPin(DigitalPin.P1) == 0) {
+        basic.showLeds(`
+            . . . # .
+            . . # # .
+            . # . # .
+            . . # # .
+            . . . # .
+            `)
+        pins.digitalWritePin(DigitalPin.P8, 1)
+        pins.digitalWritePin(DigitalPin.P9, 0)
+        pins.digitalWritePin(DigitalPin.P10, 0)
+        pins.digitalWritePin(DigitalPin.P11, 1)
+    } else if (pins.digitalReadPin(DigitalPin.P0) == 0 && pins.digitalReadPin(DigitalPin.P1) == 1) {
+        basic.showLeds(`
+            . # . . .
+            . # # . .
+            . # . # .
+            . # # . .
+            . # . . .
+            `)
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P9, 1)
+        pins.digitalWritePin(DigitalPin.P10, 1)
+        pins.digitalWritePin(DigitalPin.P11, 0)
+    } else if (pins.digitalReadPin(DigitalPin.P0) == 1 && pins.digitalReadPin(DigitalPin.P1) == 1) {
+        basic.showLeds(`
+            . # # # .
+            # . . # #
+            # . # . #
+            # # . . #
+            . # # # .
+            `)
+        pins.digitalWritePin(DigitalPin.P8, 0)
+        pins.digitalWritePin(DigitalPin.P9, 0)
+        pins.digitalWritePin(DigitalPin.P10, 0)
+        pins.digitalWritePin(DigitalPin.P11, 0)
+    } else {
+    	
+    }
+}
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+	
+})
 basic.forever(function () {
     if (input.runningTime() / 1000 >= 5) {
         runWithsensores()
